@@ -1,0 +1,48 @@
+{% extends 'dependencies.html' %}
+{% block content %}
+{% load static %}
+<body style="background-color: white;"></body>
+<div class="container " >
+    <br>
+    <br>
+    <h1>Welcome to the Quiz</h1>
+   <marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()" loop = "1"> <p style=color:brown><i><u>Note:</u> This quiz is about General Knowledge in Geography. You must attend all the questions. After Click the submit button to finish the quiz . If you click submit button before quiz you need to reanswer all the questions. Thankyou. All the Best !!</i></p></marquee>
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method='post' action=''>
+        {% csrf_token %}
+        {% for q in questions %}
+            <div class="form-group">
+                <label for="question"><b>{{ q.question }}</b></label>
+            </div>
+            <div class="form-check">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="question_{{ q.id }}" id="q{{ q.id }}_1" value="{{ q.option_one }}">
+                    <label class="form-check-label" for="q{{ q.id }}_1">{{ q.option_one }}</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="question_{{ q.id }}" id="q{{ q.id }}_2" value="{{ q.option_two }}" >
+                    <label class="form-check-label" for="q{{ q.id }}_2">{{ q.option_two }}</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="question_{{ q.id }}" id="q{{ q.id }}_3" value="{{ q.option_three }}" >
+                    <label class="form-check-label" for="q{{ q.id }}_3">{{ q.option_three }}</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="question_{{ q.id }}" id="q{{ q.id }}_4" value="{{ q.option_four }}" >
+                    <label class="form-check-label" for="q{{ q.id }}_4">{{ q.option_four }}</label>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% block script %}
+<script>
+console.log('hello world')
+</script>
+{% endblock script %}
+</div>
+{% endblock %}

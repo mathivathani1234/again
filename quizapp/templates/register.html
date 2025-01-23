@@ -1,0 +1,11 @@
+{% extends 'dependencies.html' %}
+{% load static %}
+{% block content %}
+<div class="container jumbotron">
+<form method="POST" action="" >
+{% csrf_token %}
+{{form.as_p}}
+<input class="btn btn-primary" type="submit" value="register here">
+</form>
+</div>
+{% endblock %}

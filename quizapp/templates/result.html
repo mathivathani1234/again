@@ -1,0 +1,19 @@
+{% extends 'dependencies.html' %}
+{% block content %}
+<div class="container ">
+<div class="card-column">
+<div class="card" align="centre">
+<div class="card-body">
+<h5 class="card-title">Score: {{ score }}</h5>
+<p class="card-text">Percentage: {{ percent }}</p>
+<p class="card-text">Correct answers: {{ correct }}</p>
+<p class="card-text">Incorrect answers: {{ wrong }}</p>
+<p class="card-text">Total questions: {{ total }}</p>
+<h5>All the best for next quiz!</h5>
+</div>
+</div>
+</div>
+
+</div>
+
+{% endblock %}
